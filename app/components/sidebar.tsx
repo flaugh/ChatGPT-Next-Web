@@ -140,6 +140,12 @@ export function SideBar(props: { className?: string }) {
     () => isIOS() && isMobileScreen,
     [isMobileScreen],
   );
+  const startChat = () => {
+    setTimeout(() => {
+      chatStore.newSession();
+      navigate(Path.Chat);
+    }, 10);
+  };
 
   useHotKey();
 
@@ -193,9 +199,7 @@ export function SideBar(props: { className?: string }) {
           <IconButton
             icon={<AddIcon />}
             text={shouldNarrow ? undefined : Locale.Home.NewChat}
-            onClick={() => {
-              navigate(Path.NewChat);
-            }}
+            onClick={() => startChat()}
             shadow
           />
         </div>
